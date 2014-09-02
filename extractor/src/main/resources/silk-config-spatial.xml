@@ -65,9 +65,9 @@
                                   </Compare>
                               </Aggregate>
                           </LinkageRule>
-                          <Filter threshold="0.95"></Filter>
+                          <Filter threshold="0.99"></Filter>
                           <Outputs>
-                             <Output type="file" minConfidence="0.95">
+                             <Output type="file" minConfidence="0.99">
 					              <Param name="file"
 						                    value="/home/luigi/projects/fusepoolp3/silkdeduplication/extractor/src/main/resources/accepted_links.nt" />
 					              <Param name="format" value="ntriples" />
