@@ -122,15 +122,21 @@ public class RdfCoordinatesConverter {
 	}
 	
 	public static void main(String[] args) throws FileNotFoundException {
-		// Input RDF file
-		//String rdfDataFileName = "/home/luigi/projects/workspace/utm2latlong/data/pat-centri-abitati.rdf";
-		//String rdfDataFileName = "/home/luigi/projects/workspace/utm2latlong/data/pat-locgeo.rdf";
-		String rdfDataFileName = "/home/luigi/projects/workspace/utm2latlong/data/pat-pistesci.rdf";
+		// Input RDF file		
+		//String rdfDataFile = "src/test/resources/pat-locgeo.rdf";
+		String rdfDataFile = "";
+		if( args.length == 0 ){
+			System.out.println("An argument for the RDF file to be converted is expected.");
+			System.exit(0);
+		}
+		else {
+			rdfDataFile = args[0];
+		}
 		// Output RDF file
-		File outputFile = new File("/home/luigi/projects/workspace/utm2latlong/data/enrich-pat-pistesci.rdf");
+		File outputFile = new File("wgs84-" + rdfDataFile);
 		
 		// load the data in a model
-		Model model = FileManager.get().loadModel("file:" + rdfDataFileName);
+		Model model = FileManager.get().loadModel("file:" + rdfDataFile);
 		
 		RdfCoordinatesConverter converter = new RdfCoordinatesConverter();
 		// Gets the first vertice of each polygon
