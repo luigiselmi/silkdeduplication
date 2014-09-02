@@ -25,7 +25,7 @@ The server will compare the locations' descriptions retrieving the target data f
 
 https://jena.apache.org/download/index.cgi
 
-Before starting Fuseki the target data set must be imported in the embedded Jena TDB triple store. An assembler file is provided to make it easy to import the data into Jena TDB and to run Fuseki. Be sure to update the path to the data set folder and to the Lucene index in the assembler file. The Lucene index enables the basic spatial searches supported by Jena Spatial like search for a location within a radius from a given point or within a box.
+Before starting Fuseki the target data set must be imported in the embedded Jena TDB triple store. An assembler file, jena-spatial-assembler.ttl, is provided to make it easy to import the data into Jena TDB and to run Fuseki. Be sure to update the path to the data set folder and to the Lucene index in the assembler file. The Lucene index enables the basic spatial searches supported by Jena Spatial like search for a location within a radius from a given point or within a box.
 
 
 
