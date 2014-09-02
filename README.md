@@ -21,6 +21,12 @@ In order to compile the software you need to download from its repository on git
 
 https://github.com/fusepoolP3/p3-transformer-library
 
+The server will compare the locations' descriptions retrieving the target data from a SPARQL endpoint. It can easily be set up using Fuseki from the Apache Jena project. Fuseki (version jena-fuseki-1.0.1 or later) can be download from 
+
+https://jena.apache.org/download/index.cgi
+
+Before starting Fuseki the target data set must be imported in the embedded Jena TDB triple store. 
+
 
 
 
