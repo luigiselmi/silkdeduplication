@@ -133,7 +133,7 @@ public class DuplicatesTransformer extends RdfGeneratingTransformer {
      * @return
      * @throws IOException
      */
-    protected TripleCollection parseResult(String fileName) throws IOException {
+    public TripleCollection parseResult(String fileName) throws IOException {
     	final TripleCollection links = new SimpleMGraph();
     	BufferedReader in = new BufferedReader(new FileReader(fileName));
     	String statement;
@@ -145,14 +145,14 @@ public class DuplicatesTransformer extends RdfGeneratingTransformer {
     	return links;
     }
     
-    protected UriRef getSubject(String statement){
+    public UriRef getSubject(String statement){
     	int endOfSubjectIndex = statement.indexOf('>');
     	String subjectName = statement.substring(1, endOfSubjectIndex);
     	UriRef subjectRef = new UriRef(subjectName);
     	return subjectRef;
     }
     
-    protected UriRef getObject(String statement) {
+    public UriRef getObject(String statement) {
     	int startOfObjectIndex = statement.lastIndexOf('<');
     	String objectName = statement.substring(startOfObjectIndex + 1, statement.length() - 1);
     	UriRef objectRef = new UriRef(objectName);
