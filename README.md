@@ -34,7 +34,17 @@ The converted file is also available in src/test/resources/wgs84-pat-locgeo.rdf.
 
 java -cp fuseki-server.jar tdb.tdbloader --graph=urn:x-localinstance:/enrich-pat-locgeo --desc jena-spatial-assembler.ttl wgs84-pat-locgeo.rdf
 
-where the paths are modified accordingly. The graph parameter is the named graph where the triples will be stored. That is the graph from where SILK will retrieve the data for the comparison with the incoming data. If the name of the graph is changed or not used it must be changed also in the SILK configuration file extractor/src/main/resources/silk-config-spatial.xml. 
+where the paths are modified accordingly. The graph parameter is the named graph where the triples will be stored. That is the graph from where SILK will retrieve the data for the comparison with the incoming data. If the name of the graph is changed or not used it must be changed also in the SILK configuration file extractor/src/main/resources/silk-config-spatial.xml. After the target data has been imported Fuseki can be run with the command
+
+java -Xmx4g -jar fuseki-server.jar --conf jena-spatial-assembler.ttl
+
+When Fuseki is started the application can be run as well from extractor/ folder with the command
+
+mvn exec:java
+
+The application is waiting on the port 7100. To post the RDF data to be interlinked with the data from the SPARQL endpoint move to the folder extractor/src/test/resources/ and run the curl command 
+
+curl -X POST -T pat-centri-abitati.rdf http://localhost:7100
 
 
 
