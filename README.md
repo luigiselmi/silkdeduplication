@@ -17,5 +17,7 @@ http://dati.trentino.it/dataset/centri-abitati-istat-ed-1991-980076
 
 This RDF data set contains the same information as for the first data set about 1208 locations in the province provided by ISTAT, the Italian Institute of Statistics. Locations in the two data sets are represented as members of two different classes. The names of the locations are given only for the target data set and the code identifiers are different for the same location so that the only way to check when two URIs represent the same location is by its area, perimeter and distance from the other one.
 
+In order to compile the software you need to download the transformer library that makes it possible to post a request asynchronously to the server
+
 
 
