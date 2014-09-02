@@ -32,9 +32,9 @@ java -cp <<path of fuseki-server.jar>>:<<path of extractor-0.1-SNAPSHOT.jar>> eu
 
 The converted file is also available in src/test/resources/wgs84-pat-locgeo.rdf. The converted target file can be imported in the Jena TDB triple store using the command
 
-java -cp fuseki-server.jar tdb.tdbloader --desc jena-spatial-assembler.ttl wgs84-pat-locgeo.rdf
+java -cp fuseki-server.jar tdb.tdbloader --graph=urn:x-localinstance:/enrich-pat-locgeo --desc jena-spatial-assembler.ttl wgs84-pat-locgeo.rdf
 
-where the paths are modified accordingly.
+where the paths are modified accordingly. The graph parameter is the named graph where the triples will be stored. That is the graph from where SILK will retrieve the data for the comparison with the incoming data. If the name of the graph is changed or not used it must be changed also in the SILK configuration file extractor/src/main/resources/silk-config-spatial.xml. 
 
 
 
