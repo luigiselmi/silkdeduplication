@@ -28,7 +28,7 @@ https://jena.apache.org/download/index.cgi
 Before starting Fuseki the target data set must be imported in the embedded Jena TDB triple store. An assembler file, jena-spatial-assembler.ttl, is provided to make it easy to import the data into Jena TDB and to run Fuseki. Be sure to update the path to the data set folder and to the Lucene index in the assembler file. The Lucene index enables the basic spatial searches supported by Jena Spatial like search for a location within a radius from a given point or within a box.
 By default Jena and SILK, the interlinking engine used by the application, can use only WGS84 coordinates (e.g. lat, long) for points while the vertices in the polygons given in both data set are in UTM coordinates (x, y). To make the comparison based on the distance of the locations as easy as possible the target data must be enriched with the latitude and longitude of one point taken from the vertices of the polygon of each location transforming its UTM coordinates in WGS84. You can convert the target data set with the following command
 
-java -cp &lt;path of fuseki-server.jar&gt;:&lt;path of extractor-0.1-SNAPSHOT.jar&gt; eu.fusepool.deduplication.utm2wgs84.RdfCoordinatesConverter <path of pat-locgeo.rdf>
+java -cp &lt;path of fuseki-server.jar&gt;:&lt;path of extractor-0.1-SNAPSHOT.jar&gt; eu.fusepool.deduplication.utm2wgs84.RdfCoordinatesConverter &lt;path of pat-locgeo.rdf&gt;
 
 The converted file is also available in src/test/resources/wgs84-pat-locgeo.rdf. The converted target file can be imported in the Jena TDB triple store using the command
 
