@@ -24,6 +24,12 @@
             <version>0.14-SNAPSHOT</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.clerezza</groupId>
+            <artifactId>org.apache.clerezza.rdf.jena.parser</artifactId>
+            <version>0.10-incubating-SNAPSHOT</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <artifactId>wymiwyg-commons-core</artifactId>
             <groupId>org.wymiwyg</groupId>
             <version>0.8</version>
@@ -36,7 +42,7 @@
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
+            <artifactId>slf4j-api</artifactId>
             <version>1.6.6</version>
             <scope>runtime</scope>
         </dependency>
@@ -60,6 +66,22 @@
            <groupId>eu.fusepoolp3</groupId>
            <artifactId>silk</artifactId>
            <version>0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+			<groupId>de.fuberlin.wiwiss.silk</groupId>
+			<artifactId>silk-core</artifactId>
+			<version>2.5.3</version>
+		</dependency>
+        <dependency>
+			<groupId>de.fuberlin.wiwiss.silk</groupId>
+			<artifactId>silk-jena</artifactId>  
+			<version>2.5.3</version>                
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
   <build>
@@ -109,6 +131,11 @@
                    </configuration>
              </execution>
            </executions>
+       </plugin>
+       <plugin>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-maven-plugin</artifactId>
+          <version>9.2.0.RC0</version>
        </plugin>
     </plugins>
   </build>

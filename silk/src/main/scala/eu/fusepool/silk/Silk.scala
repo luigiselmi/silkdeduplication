@@ -24,6 +24,7 @@ import de.fuberlin.wiwiss.silk.util.StringUtils._
 import de.fuberlin.wiwiss.silk.util.CollectLogs
 import java.util.logging.{Level, Logger}
 
+
 /**
  * Executes the complete Silk workflow.
  */
@@ -41,6 +42,7 @@ object Silk {
   //Register all available plugins
   Plugins.register()
   JenaPlugins.register()
+  //FusepoolPlugins.register()
 
   /**
    * Executes Silk.
@@ -113,6 +115,8 @@ object Silk {
       }
     }
   }
+  
+  
 
   /**
    * Executes a single link specification.
@@ -130,7 +134,7 @@ object Silk {
       runtimeConfig = config.runtime.copy(numThreads = numThreads, reloadCache = reload)
     ).apply()
   }
-
+  
   /**
    * Main method to allow Silk to be started from the command line.
    */

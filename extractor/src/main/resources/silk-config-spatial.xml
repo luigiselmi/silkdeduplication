@@ -1,0 +1,82 @@
+<Silk>
+        <Prefixes>
+                <Prefix namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" id="rdf"></Prefix>     
+                <Prefix namespace="http://www.w3.org/2001/XMLSchema#" id="xsd"></Prefix>
+                <Prefix namespace="http://www.w3.org/2000/01/rdf-schema#" id="rdfs"></Prefix>
+                <Prefix namespace="http://www.w3.org/2002/07/owl#" id="owl"></Prefix>
+                <Prefix namespace="http://www.w3.org/2003/01/geo/wgs84_pos#" id="geo"></Prefix>
+                <Prefix namespace="http://www.territorio.provincia.tn.it/geodati/ontology/" id="patgeo"></Prefix>
+                <Prefix namespace="http://www.territorio.provincia.tn.it/geodati/resource/" id="patres"></Prefix>                
+        </Prefixes>
+        <DataSources>
+                <DataSource id="source" type="sparqlEndpoint">
+                        <Param name="endpointURI" value="http://localhost:3030/fusepoolp3/sparql" />
+                        <Param name="graph" value="urn:x-localinstance:/enrich-pat-locgeo" />
+                        <Param name="login" value="" />
+                        <Param name="password" value="" />
+                        <Param name="pageSize" value="50000" />
+                </DataSource>
+                <DataSource type="file" id="target">
+			            <Param name="file" value="/home/luigi/projects/fusepoolp3/silkdeduplication/extractor/src/main/resources/inputdata.rdf"></Param>
+			            <Param name="format" value="RDF/XML"></Param>
+		        </DataSource>
+                
+        </DataSources>
+
+        <Blocking blocks="100" />
+        <Interlinks>
+
+                <Interlink id="locations">
+                          <LinkType>owl:sameAs</LinkType>
+                          <SourceDataset dataSource="source" var="s_place">
+                              <RestrictTo>
+                                     ?s_place rdf:type patres:località_geografiche . 
+                              </RestrictTo>
+                          </SourceDataset>
+                          <TargetDataset dataSource="target" var="t_place">
+                              <RestrictTo>
+                                     ?t_place rdf:type patres:centri_abitati .
+                              </RestrictTo>
+                          </TargetDataset>
+                          <LinkageRule>
+                              <Aggregate type="average">
+                                  <Compare metric="num" threshold="100">
+                                     <Input path="?s_place/patgeo:surfaceArea" />
+                                     <Input path="?t_place/patgeo:surfaceArea" />                                     
+                                  </Compare>
+                                  <Compare metric="num" threshold="10">
+                                     <Input path="?s_place/patgeo:perimeter" />
+                                     <Input path="?t_place/patgeo:perimeter" />                                    
+                                  </Compare>
+                                  <Compare metric="wgs84" required="true">
+                                     <TransformInput function="concat">
+                                        <Input path="?s_place/geo:geometry/geo:lat" />
+                                        <Input path="?s_place/geo:geometry/geo:long" />   
+                                        <Param name="glue" value=" " />                                     
+                                     </TransformInput>
+                                     <TransformInput function="concat">
+                                        <Input path="?t_place/geo:geometry/geo:lat" />
+                                        <Input path="?t_place/geo:geometry/geo:long" />
+                                        <Param name="glue" value=" " />                                        
+                                     </TransformInput>
+                                     <Param name="unit" value="m" />
+                                     <Param name="threshold" value="100" />
+                                     <Param name="curveStyle" value="linear" />
+                                  </Compare>
+                              </Aggregate>
+                          </LinkageRule>
+                          <Filter threshold="0.95"></Filter>
+                          <Outputs>
+                             <Output type="file" minConfidence="0.95">
+					              <Param name="file"
+						                    value="/home/luigi/projects/fusepoolp3/silkdeduplication/extractor/src/main/resources/accepted_links.nt" />
+					              <Param name="format" value="ntriples" />
+				            </Output>
+				            
+                          </Outputs>
+                </Interlink>
+        </Interlinks>
+</Silk>
+
+
+

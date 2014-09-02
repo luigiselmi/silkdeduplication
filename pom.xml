@@ -13,5 +13,6 @@
   <modules>
     <module>extractor</module>
     <module>silk</module>
+    <module>silkplugin</module>
   </modules>
 </project>

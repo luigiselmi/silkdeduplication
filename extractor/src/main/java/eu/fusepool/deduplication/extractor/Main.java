@@ -17,6 +17,7 @@ package eu.fusepool.deduplication.extractor;
 
 
 import eu.fusepool.extractor.server.ExtractorServer;
+
 import org.wymiwyg.commons.util.arguments.ArgumentHandler;
 
 /**
@@ -34,7 +35,8 @@ public class Main {
     private static void start(Arguments arguments) throws Exception {
         ExtractorServer server = new ExtractorServer(arguments.getPort());
         //alternatives:
-        server.start(new SimpleExtractor());
+        server.start(new DuplicatesExtractor());
+        //server.start(new LongRunningExtractor());
         //server.start(new LongRunningExtractor());
         //server.start(new SimpleAsyncExtractor());
         server.join();
