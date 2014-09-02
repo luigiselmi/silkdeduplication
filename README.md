@@ -1,5 +1,5 @@
-silkdeduplication
-=================
+Interlinking of Spatial Data
+============================
 
 An example application for interlinking of spatial data
 
