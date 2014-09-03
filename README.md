@@ -57,10 +57,15 @@ then unzip the file and import the file silk.jar into your local Maven repositor
 mvn install:install-file -Dfile=&lt; path to silk.jar &gt; -DgroupId=de.fuberlin.wiwiss.silk -DartifactId=silk -Dversion=2.6.0 -Dpackaging=jar
 
 The silk.jar file can be used as a dependency in the project using the coordinates
+
 &lt;dependency&gt;
+
   &lt;groupId&lt;de.fuberlin.wiwiss.silk&lt;/groupId&lt;
+  
   &lt;artifactId&lt;silk&lt;/artifactId&lt;
+  
   &lt;version&lt;2.6.0&lt;/version&lt;
+  
 &lt;/dependency&lt;
 
 
