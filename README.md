@@ -60,11 +60,11 @@ The silk.jar file can be used as a dependency in the project using the coordinat
 
 &lt;dependency&gt;
 
-  &lt;groupId&lt;de.fuberlin.wiwiss.silk&lt;/groupId&gt;
+  &lt;groupId&gt;de.fuberlin.wiwiss.silk&lt;/groupId&gt;
   
-  &lt;artifactId&lt;silk&lt;/artifactId&gt;
+  &lt;artifactId&gt;silk&lt;/artifactId&gt;
   
-  &lt;version&lt;2.6.0&lt;/version&gt;
+  &lt;version&gt;2.6.0&lt;/version&gt;
   
 &lt;/dependency&gt;
 
