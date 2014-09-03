@@ -48,7 +48,7 @@ curl -X POST -T pat-centri-abitati.rdf http://localhost:7100
 
 The result of the interlinking process will be sent back to the client.
 
-The SILK version used is 2.6.0. In order to use it in Maven it must be dowloaded from the project webste
+The SILK version used is 2.6.0 that is not available from the Maven repository. In order to use it in Maven it must be dowloaded from the project webste
 
 http://wifo5-03.informatik.uni-mannheim.de/bizer/silk/
 
