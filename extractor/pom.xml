@@ -25,9 +25,10 @@
         </dependency>
         <dependency>
             <groupId>org.apache.clerezza</groupId>
-            <artifactId>org.apache.clerezza.rdf.jena.parser</artifactId>
-            <version>0.10-incubating-SNAPSHOT</version>
-            <scope>runtime</scope>
+            <artifactId>rdf.jena.parser</artifactId>
+            <version>0.12</version>
+            <!-- only in tests and only at runtime -->
+            <scope>test</scope>
         </dependency>
         <dependency>
             <artifactId>wymiwyg-commons-core</artifactId>
@@ -67,15 +68,15 @@
            <artifactId>silk</artifactId>
            <version>0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
+		<dependency>
 			<groupId>de.fuberlin.wiwiss.silk</groupId>
-			<artifactId>silk-core</artifactId>
-			<version>2.5.3</version>
+			<artifactId>silk</artifactId>
+			<version>2.6.0</version>
 		</dependency>
         <dependency>
-			<groupId>de.fuberlin.wiwiss.silk</groupId>
-			<artifactId>silk-jena</artifactId>  
-			<version>2.5.3</version>                
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.11.2</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

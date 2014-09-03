@@ -23,7 +23,7 @@ import de.fuberlin.wiwiss.silk.plugins.jena.JenaPlugins
 import de.fuberlin.wiwiss.silk.util.StringUtils._
 import de.fuberlin.wiwiss.silk.util.CollectLogs
 import java.util.logging.{Level, Logger}
-
+import de.fuberlin.wiwiss.silk.runtime.resource.FileResourceManager
 
 /**
  * Executes the complete Silk workflow.
@@ -37,12 +37,11 @@ object Silk {
   private val logger = Logger.getLogger(Silk.getClass.getName)
 
   //Print welcome message on start-up
-  println("Silk Link Discovery Framework - Version 2.5.4")
+  println("Silk Link Discovery Framework - Version 2.6.0")
 
   //Register all available plugins
   Plugins.register()
   JenaPlugins.register()
-  //FusepoolPlugins.register()
 
   /**
    * Executes Silk.
@@ -54,10 +53,9 @@ object Silk {
    */
   def execute() {
     System.getProperty("logQueries") match {
-      case BooleanLiteral(b) if b => {
+      case BooleanLiteral(b) if b =>
         Logger.getLogger("de.fuberlin.wiwiss.silk.util.sparql").setLevel(Level.FINE)
         Logger.getLogger("").getHandlers.foreach(_.setLevel(Level.FINE))
-      }
       case _ =>
     }
 
@@ -92,7 +90,8 @@ object Silk {
    * @param reload Specifies if the entity cache is to be reloaded before executing the matching. Default: true
    */
   def executeFile(configFile: File, linkSpecID: String = null, numThreads: Int = DefaultThreads, reload: Boolean = true) {
-    executeConfig(LinkingConfig.load(configFile), linkSpecID, numThreads, reload)
+    val resourceLoader = new FileResourceManager(configFile.getParentFile)
+    executeConfig(LinkingConfig.load(resourceLoader)(configFile), linkSpecID, numThreads, reload)
   }
 
   /**
@@ -115,8 +114,6 @@ object Silk {
       }
     }
   }
-  
-  
 
   /**
    * Executes a single link specification.
@@ -134,7 +131,7 @@ object Silk {
       runtimeConfig = config.runtime.copy(numThreads = numThreads, reloadCache = reload)
     ).apply()
   }
-  
+
   /**
    * Main method to allow Silk to be started from the command line.
    */
