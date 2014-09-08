@@ -1,7 +1,7 @@
 Interlinking of Spatial Data
 ============================
 
-An example application for the interlinking of spatial data
+An example application for the interlinking of spatial data. Implements the requirements in FP-181.
 
 The purpose of the application is to enable a user to post an RDF data set about locations in the Province of Trento
 and get the result of the interlinking process against a local data set through a SPARQL endpoint. Both data sets,
