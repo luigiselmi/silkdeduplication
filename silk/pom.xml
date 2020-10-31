@@ -16,41 +16,56 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <build>
-		<plugins>
-			<plugin>
-				<groupId>org.scala-tools</groupId>
-				<artifactId>maven-scala-plugin</artifactId>
-                <version>2.15.2</version>
-				<executions>
-					<execution>
-						<id>scala-compile-first</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>add-source</goal>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>scala-test-compile</id>
-						<phase>process-test-resources</phase>
-						<goals>
-							<goal>testCompile</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+  <plugins>
+    <!--plugin>
+	<groupId>org.scala-tools</groupId>
+	<artifactId>maven-scala-plugin</artifactId>
+        <version>2.15.2</version>
+	<executions>
+	  <execution>
+	    <id>scala-compile-first</id>
+	    <phase>process-resources</phase>
+	    <goals>
+	      <goal>add-source</goal>
+	      <goal>compile</goal>
+	      </goals>
+	  </execution>
+	  <execution>
+	    <id>scala-test-compile</id>
+	    <phase>process-test-resources</phase>
+	    <goals>
+	       <goal>testCompile</goal>
+	    </goals>
+	  </execution>
+	</executions>
+    </plugin-->
+    <plugin>
+      <groupId>net.alchim31.maven</groupId>
+      <artifactId>scala-maven-plugin</artifactId>
+      <version>4.4.0</version>
+   </plugin>
+  </plugins>
+  </build>
   <dependencies>
        <dependency>
 	  <groupId>org.scala-lang</groupId>
           <artifactId>scala-library</artifactId>
 	  <version>2.10.0</version>
        </dependency>
-       <dependency>
+       <!--dependency>
 	      <groupId>de.fuberlin.wiwiss.silk</groupId>
 	      <artifactId>silk</artifactId>
 	      <version>2.6.0</version>
+       </dependency-->
+       <dependency>
+         <groupId>eu.fusepool.p3.ext.de.fuberlin.wiwiss.silk</groupId>
+         <artifactId>silk-core</artifactId>
+         <version>2.6.0</version>
+       </dependency>
+       <dependency>
+         <groupId>eu.fusepool.p3.ext.de.fuberlin.wiwiss.silk</groupId>
+         <artifactId>silk-jena</artifactId>
+         <version>2.6.0</version>
        </dependency>
        <dependency>
           <groupId>org.apache.jena</groupId>

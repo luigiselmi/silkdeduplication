@@ -14,4 +14,11 @@
     <module>extractor</module>
     <module>silk</module>
   </modules>
+  <dependencies>
+  <dependency>
+    <groupId>eu.fusepool.p3.ext.de.fuberlin.wiwiss.silk</groupId>
+    <artifactId>silk-core</artifactId>
+    <version>2.6.0</version>
+  </dependency>
+  </dependencies>
 </project>

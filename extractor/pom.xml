@@ -52,11 +52,16 @@
            <artifactId>silk</artifactId>
            <version>0.1-SNAPSHOT</version>
         </dependency>
-		<dependency>
-			<groupId>de.fuberlin.wiwiss.silk</groupId>
-			<artifactId>silk</artifactId>
-			<version>2.6.0</version>
-		</dependency>
+        <!--dependency>
+	   <groupId>de.fuberlin.wiwiss.silk</groupId>
+	   <artifactId>silk</artifactId>
+	   <version>2.6.0</version>
+	   </dependency-->
+        <dependency>
+          <groupId>eu.fusepool.p3.ext.de.fuberlin.wiwiss.silk</groupId>
+          <artifactId>silk-core</artifactId>
+          <version>2.6.0</version>
+        </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
@@ -98,11 +103,12 @@
        <plugin>
            <groupId>org.apache.maven.plugins</groupId>
            <artifactId>maven-assembly-plugin</artifactId>
+           <version>3.3.0</version>
            <executions>
              <execution>
-                   <goals>
+                   <!--goals>
                       <goal>attached</goal>
-                   </goals>
+                   </goals-->
                    <phase>package</phase>
                    <configuration>
                      <descriptorRefs>
